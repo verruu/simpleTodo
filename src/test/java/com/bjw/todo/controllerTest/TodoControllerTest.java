@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,7 +34,7 @@ public class TodoControllerTest {
     private TodoService todoService;
 
     @Test
-    private void shouldGetAllTodos() throws Exception {
+    void shouldGetAllTodos() throws Exception {
 //        given
         List<Todo> todoList = new ArrayList<>();
         todoList.add(new Todo(1L, "First todo", false));
