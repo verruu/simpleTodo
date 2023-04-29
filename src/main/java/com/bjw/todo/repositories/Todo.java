@@ -17,5 +17,10 @@ public class Todo {
     @GeneratedValue
     private Long id;
     private String text;
-    private boolean isDone;
+    private boolean completed;
+
+    public Todo(String text, boolean completed) {
+        this.text = text;
+        this.completed = completed;
+    }
 }
