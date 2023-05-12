@@ -23,9 +23,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@ExtendWith(SpringExtension.class)
 @WebMvcTest
+@ExtendWith(SpringExtension.class)
+@AllArgsConstructor
 public class TodoControllerTest {
 
     @Autowired
