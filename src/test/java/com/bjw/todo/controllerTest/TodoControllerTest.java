@@ -2,11 +2,9 @@ package com.bjw.todo.controllerTest;
 
 import com.bjw.todo.repositories.Todo;
 import com.bjw.todo.services.TodoService;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -25,7 +23,6 @@ import java.util.List;
 
 @WebMvcTest
 @ExtendWith(SpringExtension.class)
-@AllArgsConstructor
 public class TodoControllerTest {
 
     @Autowired

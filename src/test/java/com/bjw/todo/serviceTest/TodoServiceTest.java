@@ -5,6 +5,7 @@ import com.bjw.todo.repositories.TodoRepository;
 import com.bjw.todo.services.TodoService;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
@@ -12,10 +13,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@AllArgsConstructor
 public class TodoServiceTest {
 
-    private TodoRepository todoRepository;
+    private final TodoRepository todoRepository;
+
+    @Autowired
+    public TodoServiceTest(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
     @Test
     void shouldGetAllTodos() {
