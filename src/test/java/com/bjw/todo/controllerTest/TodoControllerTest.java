@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -43,5 +44,14 @@ public class TodoControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andDo(print());
+    }
+
+    @Test
+    void shouldAddTodo() {
+//        given
+        Todo todo = new  Todo(1L, "First todo", false);
+//        when
+        when(todoService.addTodo(any(Todo.class))).thenReturn(todo);
+//        then
     }
 }
