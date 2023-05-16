@@ -4,6 +4,7 @@ import com.bjw.todo.repositories.Todo;
 import com.bjw.todo.repositories.TodoRepository;
 import com.bjw.todo.services.TodoService;
 import lombok.AllArgsConstructor;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,23 +18,38 @@ public class TodoServiceTest {
 
     private final TodoRepository todoRepository;
 
+    @AfterEach
+    void tearDown() {
+        todoRepository.deleteAll();
+    }
+
     @Autowired
     public TodoServiceTest(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 
+    Todo todoSample = new Todo("Todo Sample 1", true);
+
     @Test
     void shouldGetAllTodos() {
-        Todo todoSample = new Todo("Todo Sample 1", true);
+//        given
         todoRepository.save(todoSample);
         TodoService todoService = new TodoService(todoRepository);
-
-//        List<Todo> todoList = todoService.getAllTodos();
+//        when
         Todo firstResult = todoService.getAllTodos().get(0);
-//        Todo lastResult = todoService.getAllTodos().get(todoList.size() - 1);
-
+//        then
         assertEquals(todoSample.getText(), firstResult.getText());
         assertEquals(todoSample.isCompleted(), firstResult.isCompleted());
         assertEquals(todoSample.getId(), firstResult.getId());
+    }
+
+    @Test
+    void shouldAddTodo() {
+//        given
+        TodoService todoService = new TodoService(todoRepository);
+//        when
+        todoService.addTodo(todoSample);
+//        then
+        assertEquals(1, todoRepository.count());
     }
 }

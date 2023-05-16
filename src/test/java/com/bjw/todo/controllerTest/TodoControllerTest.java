@@ -59,10 +59,10 @@ public class TodoControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         String todoJSON = objectMapper.writeValueAsString(todo);
 //        when
-        ResultActions result = mockMvc.perform(post("/todos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(todoJSON)
-        );
+        ResultActions result = mockMvc
+                .perform(post("/todos")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(todoJSON));
 //        then
         result.andExpect(status().isCreated())
                 .andExpect(jsonPath("$.text").value("First todo"))
