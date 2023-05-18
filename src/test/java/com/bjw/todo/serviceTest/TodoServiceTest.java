@@ -3,18 +3,15 @@ package com.bjw.todo.serviceTest;
 import com.bjw.todo.repositories.Todo;
 import com.bjw.todo.repositories.TodoRepository;
 import com.bjw.todo.services.TodoService;
-import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class TodoServiceTest {
+class TodoServiceTest {
 
     private final TodoRepository todoRepository;
 

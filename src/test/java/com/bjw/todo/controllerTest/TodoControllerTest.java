@@ -1,8 +1,8 @@
 package com.bjw.todo.controllerTest;
 
+import com.bjw.todo.controllers.TodoController;
 import com.bjw.todo.repositories.Todo;
 import com.bjw.todo.services.TodoService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,12 +27,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebMvcTest
+@WebMvcTest(TodoController.class)
 @ExtendWith(SpringExtension.class)
-public class TodoControllerTest {
+class TodoControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
     @MockBean
     private TodoService todoService;
 
